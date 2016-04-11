@@ -11,13 +11,13 @@ def main():
     host = given_args.host
     port = given_args.port
     filename = given_args.file
-    # First try-except block -- create socket
+    
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     except socket.error, e:
         print "Error creating socket: %s" % e
         sys.exit(1)
-    # Second try-except block -- connect to given host/port
+    
     try:
         s.connect((host, port))
     except socket.gaierror, e:
@@ -33,7 +33,7 @@ def main():
         sys.exit(1)
 
     while 1:
-           # Fourth tr-except block -- waiting to receive data from remote host
+          
         try:
             buf = s.recv(2048)
         except socket.error, e:
